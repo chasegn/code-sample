@@ -30,4 +30,9 @@ If you whiz through this sample, try adding a deployment.   We are a Docker and 
 * Stuck getting started?
   * The official Spring Boot "hello world" example is a great starting point.
 * Still need help?
-  * Further hints are available, Feel free to ask questions here.  Edit this file in your branch by adding to the questions section, push it, and we will update the file with answers. 
+  * Further hints are available, Feel free to ask questions here.  Edit this file in your branch by adding to the questions section, push it, and we will update the file with answers.
+  
+### Solution explanation
+* I refactored the method that returns the MOTD to return a class member that holds the current MOTD, initialized to the original MOTD. Although explained as out of scope for the exercise, a better solution would be to hold any options for MOTD in a database or datagrid and provide cycling or randomized messages on request. 
+* I added a method to update the MOTD with a PUT request. If the operation is successful, a 202 ACCEPTED should be returned. For a simple exercise as this, I felt it was nice to have feedback that the change was successful. I included a try/catch to demonstrate potentially returning other results, but for this exercise, most inputs should work.
+* I fixed test cases around the baseline GET and the new PUT. A @Before resets the MOTD to the original to test that an expected default is returned. Then, changing the MOTD is tested, and the GET result is verified.
